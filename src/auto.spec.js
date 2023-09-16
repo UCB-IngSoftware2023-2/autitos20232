@@ -48,3 +48,10 @@ describe("Auto gira a la derecha", () => {
     expect(auto.posicionActual()).toEqual("0,0O");
   });
 });
+describe("Auto Avanza", () => {
+  it("Avanza desde el Norte", () => {
+    let auto = new Auto(0, 0, "N");
+    auto.ejecutar("A");
+    expect(auto.posicionActual()).toEqual("0,1N");
+  });
+});

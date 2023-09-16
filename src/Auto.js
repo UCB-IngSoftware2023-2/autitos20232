@@ -18,8 +18,10 @@ class Auto {
   ejecutar(comando) {
     if (comando == "I") {
       this.direccion = this.girosIzquierda.get(this.direccion);
-    } else {
+    } else if (comando == "D") {
       this.direccion = this.girosDerecha.get(this.direccion);
+    } else if (comando == "A") {
+      this.coordY++;
     }
   }
   posicionActual() {
