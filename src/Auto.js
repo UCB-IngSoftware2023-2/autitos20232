@@ -12,6 +12,7 @@ class Auto {
     this.girosDerecha = new Map();
     this.girosDerecha.set("N", "E");
     this.girosDerecha.set("O", "N");
+    this.girosDerecha.set("E", "S");
   }
   ejecutar(comando) {
     if (comando == "I") {
