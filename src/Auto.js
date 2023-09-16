@@ -5,14 +5,19 @@ class Auto {
     this.direccion = direccion;
   }
   ejecutar(comando) {
-    if (this.direccion === "O") {
-      this.direccion = "S";
-    } else if (this.direccion === "N") {
-      this.direccion = "O";
-    } else if (this.direccion === "S") {
-      this.direccion = "E";
-    } else if (this.direccion === "E") {
-      this.direccion = "N";
+    switch (this.direccion) {
+      case "O":
+        this.direccion = "S";
+        break;
+      case "N":
+        this.direccion = "O";
+        break;
+      case "S":
+        this.direccion = "E";
+        break;
+      case "E":
+        this.direccion = "N";
+        break;
     }
   }
   posicionActual() {
