@@ -1,6 +1,6 @@
 //import sumar from "./sumador.js";
 import Auto from "./Auto";
-describe("Auto", () => {
+describe("Auto gira a la Izquierda", () => {
   it("Gira a la izquierda desde el Norte", () => {
     let auto = new Auto(0, 0, "N");
     auto.ejecutar("I");
@@ -21,7 +21,9 @@ describe("Auto", () => {
     auto.ejecutar("I");
     expect(auto.posicionActual()).toEqual("0,0N");
   });
+});
 
+describe("Auto gira a la derecha", () => {
   it("Gira a la derecha desde el Norte", () => {
     let auto = new Auto(0, 0, "N");
     auto.ejecutar("D");
