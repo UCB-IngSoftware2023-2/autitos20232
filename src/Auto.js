@@ -9,9 +9,16 @@ class Auto {
     this.girosIzquierda.set("N", "O");
     this.girosIzquierda.set("S", "E");
     this.girosIzquierda.set("E", "N");
+    this.girosDerecha = new Map();
+    this.girosDerecha.set("N", "E");
+    this.girosDerecha.set("O", "N");
   }
   ejecutar(comando) {
-    this.direccion = this.girosIzquierda.get(this.direccion);
+    if (comando == "I") {
+      this.direccion = this.girosIzquierda.get(this.direccion);
+    } else {
+      this.direccion = this.girosDerecha.get(this.direccion);
+    }
   }
   posicionActual() {
     let posicion = this.coordX + "," + this.coordY + this.direccion;

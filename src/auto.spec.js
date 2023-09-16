@@ -21,4 +21,16 @@ describe("Auto", () => {
     auto.ejecutar("I");
     expect(auto.posicionActual()).toEqual("0,0N");
   });
+
+  it("Gira a la derecha desde el Norte", () => {
+    let auto = new Auto(0, 0, "N");
+    auto.ejecutar("D");
+    expect(auto.posicionActual()).toEqual("0,0E");
+  });
+
+  it("Gira a la derecha desde el Oeste", () => {
+    let auto = new Auto(0, 0, "O");
+    auto.ejecutar("D");
+    expect(auto.posicionActual()).toEqual("0,0N");
+  });
 });
