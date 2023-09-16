@@ -1,5 +1,5 @@
 //import sumar from "./sumador.js";
-
+import Auto from "./Auto";
 describe("Auto", () => {
   it("Gira a la izquierda desde el Norte", () => {
     let auto = new Auto(0, 0, "N");
@@ -11,23 +11,9 @@ describe("Auto", () => {
     auto.ejecutar("I");
     expect(auto.posicionActual()).toEqual("0,0S");
   });
+  it("Gira a la izquierda desde el Sud", () => {
+    let auto = new Auto(0, 0, "S");
+    auto.ejecutar("I");
+    expect(auto.posicionActual()).toEqual("0,0E");
+  });
 });
-
-class Auto {
-  constructor(coordX, coordY, direccion) {
-    this.coordX = coordX;
-    this.coordY = coordY;
-    this.direccion = direccion;
-  }
-  ejecutar(comando) {
-    if (this.direccion === "O") {
-      this.direccion = "S";
-    } else if (this.direccion === "N") {
-      this.direccion = "O";
-    }
-  }
-  posicionActual() {
-    let posicion = this.coordX + "," + this.coordY + this.direccion;
-    return posicion;
-  }
-}
