@@ -1,0 +1,10 @@
+//Mostrar la dimension de la matriz ingresa por el usuario
+Ejecutar el comando girar a la Izquierda y mostrar la posición final
+Ejecutar el comando girar a la Derecha y mostrar la posición final
+Ejecutar el comando girar a la Avanzar y mostrar la posición final
+Mostrar posicion inicial que definió el usuario
+Mostrar los comandos ingresados por el usuario
+
+
+
+
