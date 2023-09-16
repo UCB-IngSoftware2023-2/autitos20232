@@ -13,6 +13,7 @@ class Auto {
     this.girosDerecha.set("N", "E");
     this.girosDerecha.set("O", "N");
     this.girosDerecha.set("E", "S");
+    this.girosDerecha.set("S", "O");
   }
   ejecutar(comando) {
     if (comando == "I") {

@@ -39,4 +39,10 @@ describe("Auto", () => {
     auto.ejecutar("D");
     expect(auto.posicionActual()).toEqual("0,0S");
   });
+
+  it("Gira a la derecha desde el Sud", () => {
+    let auto = new Auto(0, 0, "S");
+    auto.ejecutar("D");
+    expect(auto.posicionActual()).toEqual("0,0O");
+  });
 });
