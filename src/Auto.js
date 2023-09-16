@@ -21,7 +21,11 @@ class Auto {
     } else if (comando == "D") {
       this.direccion = this.girosDerecha.get(this.direccion);
     } else if (comando == "A") {
-      this.coordY++;
+      if (this.direccion === "O") {
+        this.coordX--;
+      } else {
+        this.coordY++;
+      }
     }
   }
   posicionActual() {

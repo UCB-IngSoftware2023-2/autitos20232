@@ -54,4 +54,9 @@ describe("Auto Avanza", () => {
     auto.ejecutar("A");
     expect(auto.posicionActual()).toEqual("0,1N");
   });
+  it("Avanza desde el Oeste", () => {
+    let auto = new Auto(1, 1, "O");
+    auto.ejecutar("A");
+    expect(auto.posicionActual()).toEqual("0,1O");
+  });
 });
