@@ -1,62 +1,72 @@
-//import sumar from "./sumador.js";
-import Auto from "./Auto";
+import Auto from "./auto";
+import {
+  COMANDO_IZQUIERDA,
+  COMANDO_DERECHA,
+  COMANDO_AVANZAR,
+  NORTE,
+  ESTE,
+  OESTE,
+  SUR,
+} from "./constantes.js";
+
 describe("Auto gira a la Izquierda", () => {
-  it("Gira a la izquierda desde el Norte", () => {
-    let auto = new Auto(0, 0, "N");
-    auto.ejecutar("I");
+  it("cambia ubicacion desde el Norte", () => {
+    let auto = new Auto(0, 0, NORTE);
+    auto.ejecutar(COMANDO_IZQUIERDA);
     expect(auto.posicionActual()).toEqual("0,0O");
   });
-  it("Gira a la izquierda desde el Oeste", () => {
-    let auto = new Auto(0, 0, "O");
-    auto.ejecutar("I");
+  it("cambia ubicacion desde el Oeste", () => {
+    let auto = new Auto(0, 0, OESTE);
+    auto.ejecutar(COMANDO_IZQUIERDA);
     expect(auto.posicionActual()).toEqual("0,0S");
   });
-  it("Gira a la izquierda desde el Sud", () => {
-    let auto = new Auto(0, 0, "S");
-    auto.ejecutar("I");
+  it("cambia ubicacion desde el Sud", () => {
+    let auto = new Auto(0, 0, SUR);
+    auto.ejecutar(COMANDO_IZQUIERDA);
     expect(auto.posicionActual()).toEqual("0,0E");
   });
-  it("Gira a la izquierda desde el Este", () => {
-    let auto = new Auto(0, 0, "E");
-    auto.ejecutar("I");
+  it("cambia ubicacion desde el Este", () => {
+    let auto = new Auto(0, 0, ESTE);
+    auto.ejecutar(COMANDO_IZQUIERDA);
     expect(auto.posicionActual()).toEqual("0,0N");
   });
 });
 
 describe("Auto gira a la derecha", () => {
-  it("Gira a la derecha desde el Norte", () => {
-    let auto = new Auto(0, 0, "N");
-    auto.ejecutar("D");
+  it("cambia ubicacion desde el Norte", () => {
+    let auto = new Auto(0, 0, NORTE);
+    auto.ejecutar(COMANDO_DERECHA);
     expect(auto.posicionActual()).toEqual("0,0E");
   });
 
-  it("Gira a la derecha desde el Oeste", () => {
-    let auto = new Auto(0, 0, "O");
-    auto.ejecutar("D");
+  it("cambia ubicacion desde el Oeste", () => {
+    let auto = new Auto(0, 0, OESTE);
+    auto.ejecutar(COMANDO_DERECHA);
     expect(auto.posicionActual()).toEqual("0,0N");
   });
 
-  it("Gira a la derecha desde el Este", () => {
-    let auto = new Auto(0, 0, "E");
-    auto.ejecutar("D");
+  it("cambia ubicacion desde el Este", () => {
+    let auto = new Auto(0, 0, ESTE);
+    auto.ejecutar(COMANDO_DERECHA);
     expect(auto.posicionActual()).toEqual("0,0S");
   });
 
-  it("Gira a la derecha desde el Sud", () => {
-    let auto = new Auto(0, 0, "S");
-    auto.ejecutar("D");
+  it("cambia ubicacion desde el Sud", () => {
+    let auto = new Auto(0, 0, SUR);
+    auto.ejecutar(COMANDO_DERECHA);
     expect(auto.posicionActual()).toEqual("0,0O");
   });
 });
+
 describe("Auto Avanza", () => {
-  it("Avanza desde el Norte", () => {
-    let auto = new Auto(0, 0, "N");
-    auto.ejecutar("A");
+  it("cambia posicion desde el  Norte", () => {
+    let auto = new Auto(0, 0, NORTE);
+    auto.ejecutar(COMANDO_AVANZAR);
     expect(auto.posicionActual()).toEqual("0,1N");
   });
-  it("Avanza desde el Oeste", () => {
-    let auto = new Auto(1, 1, "O");
-    auto.ejecutar("A");
+  it("cambia posicion desde el Oeste", () => {
+    let auto = new Auto(1, 1, OESTE);
+    auto.ejecutar(COMANDO_AVANZAR);
     expect(auto.posicionActual()).toEqual("0,1O");
   });
 });

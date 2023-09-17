@@ -1,36 +1,76 @@
-class Auto {
-  constructor(coordX, coordY, direccion) {
-    this.coordX = coordX;
-    this.coordY = coordY;
-    this.direccion = direccion;
+import {
+  COMANDO_IZQUIERDA,
+  COMANDO_DERECHA,
+  COMANDO_AVANZAR,
+  NORTE,
+  ESTE,
+  OESTE,
+  SUR,
+} from "./constantes.js";
 
-    this.girosIzquierda = new Map();
-    this.girosIzquierda.set("O", "S");
-    this.girosIzquierda.set("N", "O");
-    this.girosIzquierda.set("S", "E");
-    this.girosIzquierda.set("E", "N");
-    this.girosDerecha = new Map();
-    this.girosDerecha.set("N", "E");
-    this.girosDerecha.set("O", "N");
-    this.girosDerecha.set("E", "S");
-    this.girosDerecha.set("S", "O");
+class Auto {
+  constructor(posicionX, posicionY, ubicacion) {
+    this.posicionX = posicionX;
+    this.posicionY = posicionY;
+    this.ubicacion = ubicacion;
+    this.girosIzquierda = this.inicializarGirosIzquierda();
+    this.girosDerecha = this.inicializarGirosDerecha();
   }
   ejecutar(comando) {
-    if (comando == "I") {
-      this.direccion = this.girosIzquierda.get(this.direccion);
-    } else if (comando == "D") {
-      this.direccion = this.girosDerecha.get(this.direccion);
-    } else if (comando == "A") {
-      if (this.direccion === "O") {
-        this.coordX--;
-      } else {
-        this.coordY++;
-      }
+    if (comando === COMANDO_IZQUIERDA) {
+      this.ejecutarComandoIzquierda();
+    }
+    if (comando === COMANDO_DERECHA) {
+      this.ejecutarComandoDerecha();
+    }
+    if (comando === COMANDO_AVANZAR) {
+      this.ejecutarComandoAvanzar();
     }
   }
   posicionActual() {
-    let posicion = this.coordX + "," + this.coordY + this.direccion;
-    return posicion;
+    return this.posicionX + "," + this.posicionY + this.ubicacion;
+  }
+
+  ejecutarComandoDerecha() {
+    this.ubicacion = this.ubicacionGirandoADerechaDesde(this.ubicacion);
+  }
+
+  ejecutarComandoIzquierda() {
+    this.ubicacion = this.ubicacionGirandoAIzquierdaDesde(this.ubicacion);
+  }
+
+  ejecutarComandoAvanzar() {
+    if (this.ubicacion === OESTE) {
+      this.posicionX--;
+    } else {
+      this.posicionY++;
+    }
+  }
+
+  ubicacionGirandoAIzquierdaDesde(ubicacion) {
+    return this.girosIzquierda.get(ubicacion);
+  }
+
+  ubicacionGirandoADerechaDesde(ubicacion) {
+    return this.girosDerecha.get(ubicacion);
+  }
+
+  inicializarGirosIzquierda() {
+    const ubicacionesIzquierda = new Map();
+    ubicacionesIzquierda.set(OESTE, SUR);
+    ubicacionesIzquierda.set(NORTE, OESTE);
+    ubicacionesIzquierda.set(SUR, ESTE);
+    ubicacionesIzquierda.set(ESTE, NORTE);
+    return ubicacionesIzquierda;
+  }
+
+  inicializarGirosDerecha() {
+    const ubicacionesDerecha = new Map();
+    ubicacionesDerecha.set(NORTE, ESTE);
+    ubicacionesDerecha.set(OESTE, NORTE);
+    ubicacionesDerecha.set(ESTE, SUR);
+    ubicacionesDerecha.set(SUR, OESTE);
+    return ubicacionesDerecha;
   }
 }
 export default Auto;
